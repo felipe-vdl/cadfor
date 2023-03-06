@@ -26,3 +26,8 @@ Route::get 	('/usuarios/{id}/edit',			'FuncionarioController@edit');
 Route::post ('/usuarios/{id}/update',			'FuncionarioController@update');
 Route::get 	('/alterasenha',			'FuncionarioController@AlteraSenha');
 Route::post	('/salvasenha',   		'FuncionarioController@SalvarSenha');
+
+Route::group(['middleware' => 'apikey'], function() {
+    Route::get('/api/cadastros', 'ApiController@cadastros');
+    Route::get('/api/cadastros/{id}', 'ApiController@cadastroPorId');
+});
